@@ -1,6 +1,6 @@
 # Angular+Bootstrap
 
-## Bootstrap导入
+## Bootstrap与Jquery导入方法
 1. 在工程目录下面安装以下两个包
 ``` bash
 npm install -S jquery bootstrap
