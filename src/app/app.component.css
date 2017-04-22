@@ -1,0 +1,9 @@
+.nav > li.active,
+.nav > li > a:hover,
+.nav > li > a:focus,
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  color: #555555;
+  background-color: #E7E7E7;
+}

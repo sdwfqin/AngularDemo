@@ -1,0 +1,12 @@
+  <div class="form-group">
+    <label>Hero Search:</label>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"
+           type="text" class="form-control"/>
+  </div>
+  <table class="table table-hover">
+    <tr *ngFor="let hero of heroes | async" (click)="gotoDetail(hero)">
+      <td>
+        {{hero.name}}
+      </td>
+    </tr>
+  </table>

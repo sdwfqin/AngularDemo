@@ -1,0 +1,30 @@
+<div class="form-group">
+  <label>绑定到用户输入事件: </label>
+  <button type="button" (click)="onClickMe()" class="btn btn-default">点我</button>
+  <span>{{clickMessage}}</span>
+</div>
+
+<div class="form-group">
+  <label>通过 $event 对象取得用户输入: </label>
+  <input type="text" (keyup)="onKey($event)">
+  <p>{{values}}</p>
+</div>
+
+<!--#box1 模板引用变量-->
+<div class="form-group">
+  <label>从一个模板引用变量中获得用户输入: </label>
+  <input #box1 (keyup)="onKey1(box1.value)">
+  <p>{{values1}}</p>
+</div>
+
+<div class="form-group">
+  <label>按键事件过滤(按回车键时): </label>
+  <input #box2 (keyup.enter)="onKey2(box2.value)">
+  <p>{{values2}}</p>
+</div>
+
+<div class="form-group">
+  <label>失去焦点事件 (blur): </label>
+  <input #box3 (blur)="onKey3(box3.value)">
+  <p>{{values3}}</p>
+</div>

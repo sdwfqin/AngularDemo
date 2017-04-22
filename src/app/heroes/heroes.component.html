@@ -1,0 +1,67 @@
+<h2>My Heroes</h2>
+<div class="form-group">
+  <label>Hero name:</label> <input #heroName/>
+  <button type="button" class="btn btn-primary" (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
+
+<div>
+  <table class="table table-hover table-condensed">
+    <tr *ngFor="let hero of heroes" data-toggle="modal" data-target="#myModal"
+        [class.active]="hero === selectedHero" (click)="onSelect(hero)">
+      <td>
+        <h3 text-left>{{hero.id}}</h3>
+      </td>
+      <td>
+        <h5 text-left>{{hero.name}}</h5>
+      </td>
+      <td>
+        <!--$event.stopPropagation() => 阻止点击事件向上冒泡-->
+        <button class="btn btn-default" (click)="delete(hero); $event.stopPropagation()">x</button>
+      </td>
+    </tr>
+  </table>
+  <!--<ul class="list-group">-->
+    <!--&lt;!&ndash;-->
+    <!--[class.selected]="hero === selectedHero"-->
+    <!--在点击事件后，有时候需要更新一下样式，以表示当前选中项-->
+    <!--[class.selected]的取值是true和false, true表示样式生效。-->
+    <!--仅当遍历到的hero与你点击的selectedHero相同时，才使用css中的selected样式-->
+    <!--&ndash;&gt;-->
+    <!--<li class="list-group-item" *ngFor="let hero of heroes"-->
+        <!--[class.active]="hero === selectedHero" (click)="onSelect(hero)">-->
+      <!--<span class="label label-default">{{hero.id}}</span> {{hero.name}}-->
+      <!--&lt;!&ndash;$event.stopPropagation() => 阻止点击事件向上冒泡&ndash;&gt;-->
+      <!--<button class="badge"-->
+              <!--(click)="delete(hero); $event.stopPropagation()">x</button>-->
+    <!--</li>-->
+  <!--</ul>-->
+</div>
+
+<!--<div *ngIf="selectedHero">-->
+  <!--<h2>-->
+    <!--&lt;!&ndash;管道操作符(|),uppercase管道格式化,全部为大写&ndash;&gt;-->
+    <!--{{selectedHero.name | uppercase}} is my hero-->
+  <!--</h2>-->
+  <!--<button type="button" class="btn btn-info" (click)="gotoDetail()">View Details</button>-->
+<!--</div>-->
+
+<!-- Modal -->
+<div *ngIf="selectedHero" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">my hero</h4>
+      </div>
+      <div class="modal-body">
+        <h2>{{selectedHero.name | uppercase}}</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="gotoDetail()">View Details</button>
+      </div>
+    </div>
+  </div>
+</div>
